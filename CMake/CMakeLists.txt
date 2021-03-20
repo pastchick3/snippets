@@ -6,6 +6,12 @@ configure_file(config.h.in config.h)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+if(MSVC)
+    add_compile_options(/W4)
+else()
+    add_compile_options(-Wall)
+endif()
+
 add_subdirectory(lib)
 add_executable(Main main.cpp)
 target_link_libraries(Main PUBLIC Lib)
